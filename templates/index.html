@@ -118,17 +118,32 @@
         </div>
         <button id="shorten_btn" class="shorten-btn">Shorten</button>
       </div>
-      <div class="result"><p id="result_text" class="result-text"></p></div>
+      <div class="result">
+        <div id="result__inner">
+          <p id="result__long">
+            https://account.mongodb.com/account/login?n=%2Fv2%2F60e250ecefd3ec5e15acd896&nextHash=%23metrics%2FreplicaSet%2F60e252069774ca00f4a845d8%2Fexplorer%2Furl-shortener%2Furls%2Ffind
+          </p>
+          <div>
+            <a
+              id="result__short"
+              href="http://127.0.0.1:5000/xqc"
+              target="_blank"
+              >1pt.one/xqc</a
+            >
+            <button id="result__copyBtn">Copy</button>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="scroll">
       <p>More info and documentation down below</p>
       <button
-        class="scroll-btn"
+        class="scroll__btn"
         onclick="document.querySelector('.info').scrollIntoView({behavior: 'smooth'});"
       >
         <svg
+          class="scroll__icon"
           xmlns="http://www.w3.org/2000/svg"
-          class="scroll-icon"
           fill="none"
           viewBox="0 0 24 24"
           stroke="red"

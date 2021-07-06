@@ -19,7 +19,6 @@ cluster = MongoClient(connection_string)
 database = cluster["url-shortener"]
 collection = database["urls"]
 
-
 ######### Functions
 # Create new short url and add it to the database
 def add_url(short_url, long_url):

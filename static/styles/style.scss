@@ -16,10 +16,17 @@ body {
   }
 }
 
+.swal2-confirm {
+  background-color: hsl(0, 83%, 70%) !important;
+  box-shadow: 0px 0px 0px 0px hsl(0, 68%, 64%) !important;
+  padding: 0.75rem 2rem !important;
+}
+
 .main {
-  padding-bottom: 20rem;
+  padding-bottom: 15rem;
   margin: auto;
   width: 90%;
+  height: 90rem;
   max-width: 35rem;
   height: 100vh;
   display: flex;
@@ -30,10 +37,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     .logo-icon {
-      width: 2.3rem;
-      height: 2.3rem;
+      width: 2rem;
+      height: 2rem;
     }
     .logo-text {
       margin: 0;
@@ -244,6 +251,83 @@ body {
       }
     }
   }
+  .result {
+    width: 100%;
+    height: 4rem;
+    #result__inner {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background-color: hsl(0, 0%, 100%);
+      box-shadow: 0px 0px 0px 1px hsl(210, 67%, 93%);
+      justify-content: space-between;
+      align-items: center;
+      animation: slideFromBottom 600ms ease-in-out;
+    }
+    #result__long {
+      color: hsl(210, 17%, 47%);
+      max-width: 50%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    #result__short {
+      color: black;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      color: hsl(210, 99%, 32%);
+      font-weight: 500;
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -3px;
+        left: 0;
+        background-color: hsl(210, 99%, 32%);
+        transform-origin: bottom right;
+        transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+      }
+      &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    }
+    #result__copyBtn {
+      border: none;
+      cursor: pointer;
+      color: hsl(210, 17%, 47%);
+      background-color: hsl(210, 67%, 93%);
+      box-shadow: 0px 0px 0px 1px hsl(211, 30%, 79%);
+      transition: box-shadow 0.3s;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      margin: 0;
+      margin-left: 1rem;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      &:hover {
+        box-shadow: 0px 0px 0px 1.5px hsl(210, 99%, 32%);
+        color: hsl(210, 99%, 32%);
+      }
+    }
+    @keyframes slideFromBottom {
+      0% {
+        transform: translateX(-50rem);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0rem);
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .scroll {
@@ -259,29 +343,29 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: hsl(210, 17%, 47%);
-}
-.scroll-btn {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-.scroll-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  stroke: hsl(210, 17%, 47%);
-  animation-name: scroll;
-  animation-duration: 2s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-}
-@keyframes scroll {
-  0% {
-    transform: translateY(0);
+  .scroll__btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   }
-  50% {
-    transform: translateY(10px);
+  .scroll__icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: hsl(210, 17%, 47%);
+    animation-name: scroll;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
   }
-  100% {
-    transform: translateY(0px);
+  @keyframes scroll {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
   }
 }
