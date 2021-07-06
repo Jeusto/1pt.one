@@ -1,6 +1,10 @@
 // General
-html {
-  box-sizing: border-box;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-height: 100vh;
+  overflow: hidden;
 }
 
 body {
@@ -23,12 +27,10 @@ body {
 }
 
 .main {
-  padding-bottom: 15rem;
   margin: auto;
   width: 90%;
-  height: 90rem;
   max-width: 35rem;
-  height: 100vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,7 +138,7 @@ body {
         border: none;
         outline: none;
         display: block;
-        width: 100%;
+        width: 89.5%;
         margin: 0;
         padding: 12px 12px 12px 44px;
         font-family: inherit;
@@ -172,6 +174,9 @@ body {
         transform-origin: 100% 50%;
         transform: translateX(var(--clear-swipe)) scaleX(var(--clear-swipe-x))
           translateZ(0);
+      }
+      &:focus {
+        --b: var(--close-background);
       }
       svg {
         display: block;
@@ -330,7 +335,7 @@ body {
   }
 }
 
-.scroll {
+.footer {
   position: absolute;
   bottom: 2rem;
   right: 0;
@@ -342,30 +347,28 @@ body {
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
-  color: hsl(210, 17%, 47%);
-  .scroll__btn {
-    border: none;
-    background-color: transparent;
+  .footer__link {
+    text-decoration: none;
+    color: hsl(210, 17%, 47%);
+    fill: hsl(210, 17%, 47%);
+    padding: 0.25rem;
     cursor: pointer;
-  }
-  .scroll__icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    stroke: hsl(210, 17%, 47%);
-    animation-name: scroll;
-    animation-duration: 2s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-  }
-  @keyframes scroll {
-    0% {
-      transform: translateY(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      color: hsl(210, 99%, 32%);
+      fill: hsl(210, 99%, 32%);
     }
-    50% {
-      transform: translateY(10px);
+    .footer__text {
+      margin: 0;
     }
-    100% {
-      transform: translateY(0px);
+    .footer__icon {
+      border: none;
+      background-color: transparent;
+      margin-right: 0.5rem;
+      width: 1.1rem;
+      height: 1.1rem;
     }
   }
 }
