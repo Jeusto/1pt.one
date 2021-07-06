@@ -6,6 +6,7 @@ from uuid import uuid4
 from datetime import datetime
 from dotenv import load_dotenv, find_dotenv
 from flask import Flask, redirect, url_for, request, Response
+from flask import render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
@@ -121,8 +122,15 @@ def get_url(short_url):
 
 
 ######### Routes
-@app.route("/", methods=["GET"])
-def default():
+# Default page
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+
+# Show api status
+@app.route("/status", methods=["GET"])
+def status():
     response = Response(
         "{'status': '200', 'message': Api is live. Read the documentation at ###'}",
         status=200,

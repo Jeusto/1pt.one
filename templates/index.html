@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="logo">
+        <svg
+          class="logo-icon"
+          id="Capa_1"
+          enable-background="new 0 0 512.16 512.16"
+          height="512"
+          viewBox="0 0 512.16 512.16"
+          width="512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <path
+              fill="#52a3f2"
+              d="m256.08 301.52-39.336-5.361-6.104-40.078c-25.281-24.961-65.281-24.961-90.24 0l-101.439 101.439c-25.281 24.961-25.281 65.6 0 90.561l45.119 45.119c24.961 25.281 65.6 25.281 90.561 0l101.439-101.44c24.961-24.961 24.961-64.961 0-90.24zm-146.881 146.56-45.119-45.121 101.439-101.76 37.34 7.264 8.102 38.176z"
+            />
+            <path
+              fill="#52a3f2"
+              d="m493.199 64.08-45.119-45.119c-24.961-25.281-65.6-25.281-90.561 0l-101.439 101.439c-24.961 24.959-24.961 64.959 0 90.24l40.559 7.688 4.881 37.752c25.281 24.959 65.281 24.959 90.24 0l101.439-101.439c25.281-24.961 25.281-65.6 0-90.561zm-146.558 146.881-39.682-8.74-5.76-36.701 101.762-101.44 45.119 45.119z"
+            />
+            <g fill="#2177cc">
+              <path
+                d="m165.52 301.199 37.34 7.264 8.102 38.176c-12.48 12.48-32.961 12.48-45.441 0-6.08-6.078-9.279-14.398-9.279-22.719s3.197-16.641 9.278-22.721z"
+              />
+              <path
+                d="m256.08 301.52v-.321l-39.336-5.041-5.783-40.078 45.119-45.119 40.559 7.367 4.56 37.752h.321z"
+                <path
+                d="m355.92 188.24c0 8.32-3.199 16.641-9.279 22.721l-39.682-8.74-5.76-36.701c12.48-12.479 32.961-12.479 45.441 0 6.081 6.08 9.28 14.4 9.28 22.72z"
+              />
+            </g>
+            <path
+              fill="#0152a2"
+              d="m256.08 301.199v.321l-45.119 45.119-45.441-45.44 45.121-45.119h.32z"
+            />
+            <path
+              fill="#0152a2"
+              d="m346.641 210.961-45.121 45.119h-.321l-45.119-45.119v-.32l45.119-45.121z"
+            />
+          </g>
+        </svg>
+        <h1 class="logo-text">1pt.one - A minimalistic url shortener</h1>
+      </div>
+      <div class="url-input">
+        <div class="icon">
+          <svg viewBox="0 0 18 18">
+            <path
+              d="M10.05 7.95001C11.55 9.45001 11.55 11.775 10.05 13.275L7.95 15.375C6.45 16.875 4.125 16.875 2.625 15.375C1.125 13.875 1.125 11.55 2.625 10.05L4.5 8.25001"
+            />
+            <path
+              d="M7.9502 10.05C6.4502 8.55 6.4502 6.225 7.9502 4.725L10.0502 2.625C11.5502 1.125 13.8752 1.125 15.3752 2.625C16.8752 4.125 16.8752 6.45 15.3752 7.95L13.5002 9.75"
+            />
+          </svg>
+          <div class="favicon"></div>
+        </div>
+        <div class="text">
+          <input
+            id="long_url_input"
+            type="text"
+            placeholder="Enter a long URL"
+          />
+        </div>
+        <button class="clear">
+          <svg viewBox="0 0 24 24">
+            <path class="line" d="M2 2L22 22" />
+            <path class="long" d="M9 15L20 4" />
+            <path class="arrow" d="M13 11V7" />
+            <path class="arrow" d="M17 11H13" />
+          </svg>
+        </button>
+      </div>
+      <div class="second-row">
+        <div class="url-input url-input2">
+          <div class="icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 10-4.243 4.243 3 3 0 004.243-4.243zm0-5.758a3 3 0 10-4.243-4.243 3 3 0 004.243 4.243z"
+              />
+            </svg>
+            <div class="favicon"></div>
+          </div>
+          <div class="text">
+            <input
+              id="short_url_input"
+              type="text"
+              placeholder="Enter short version (optional)"
+            />
+          </div>
+          <button class="clear">
+            <svg viewBox="0 0 24 24">
+              <path class="line" d="M2 2L22 22" />
+              <path class="long" d="M9 15L20 4" />
+              <path class="arrow" d="M13 11V7" />
+              <path class="arrow" d="M17 11H13" />
+            </svg>
+          </button>
+        </div>
+        <button id="shorten_btn" class="shorten-btn">Shorten</button>
+      </div>
+      <div class="result"><p id="result_text" class="result-text"></p></div>
+    </div>
+    <div class="scroll">
+      <p>More info and documentation down below</p>
+      <button
+        class="scroll-btn"
+        onclick="document.querySelector('.info').scrollIntoView({behavior: 'smooth'});"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="scroll-icon"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="red"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 13l-7 7-7-7m14-8l-7 7-7-7"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="info">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+      corporis quis quidem iste ipsum laboriosam facilis soluta ducimus,
+      exercitationem recusandae corrupti deserunt a, natus aperiam eum
+      reprehenderit officia et minima architecto dolorum perspiciatis nemo
+      dignissimos. Quisquam deleniti eligendi quos neque consequuntur nesciunt
+      aperiam magnam minima totam temporibus, pariatur qui aut alias, iste
+      perferendis laborum soluta fuga unde ab officia corrupti. Aliquid delectus
+      incidunt pariatur numquam vero eum laboriosam, aperiam rerum nihil ullam
+      iure totam earum obcaecati eos architecto at perspiciatis tempore in
+      ipsam. Blanditiis nostrum, possimus earum quas repudiandae quia, ducimus
+      reprehenderit dignissimos fugiat explicabo optio maxime sapiente aliquam,
+      quisquam magnam. Eligendi nihil reprehenderit nobis natus earum
+      accusantium, voluptates quasi ipsum laboriosam omnis sit dolor. Ducimus
+      quia assumenda amet voluptatem ut porro, harum enim, laboriosam aut nam
+      obcaecati. Omnis possimus distinctio, voluptatibus praesentium aut quas
+      culpa illo iure dolor quaerat natus nulla explicabo sint molestiae sequi
+      quibusdam, nam vel quia temporibus est commodi. Et quam beatae quisquam
+      necessitatibus fuga accusantium laudantium, inventore ex rem! Corporis
+      eius labore fuga reprehenderit numquam velit sed debitis laudantium
+      veritatis, aliquid saepe itaque veniam, dolor temporibus magni! Expedita
+      velit incidunt quo odit est blanditiis asperiores delectus fugit iure
+      aspernatur. At iure reiciendis eligendi vel quasi ad porro est optio
+      doloremque, sunt velit unde quam quibusdam saepe molestiae, asperiores
+      nemo corrupti facilis aut dignissimos! Cupiditate rem obcaecati voluptas
+      dolorem, provident ea nihil ullam reprehenderit accusamus exercitationem,
+      quibusdam quisquam repellat eos in! Tempora asperiores, laborum odio ab
+      magnam odit blanditiis quia, dicta illo soluta, saepe excepturi corrupti
+      nostrum error! Sunt corporis asperiores, veniam ducimus ipsum a nam,
+      adipisci sequi, ab in eaque! Cum totam distinctio quibusdam sed error
+      mollitia voluptatum commodi quidem excepturi voluptatibus omnis cupiditate
+      magni, ipsa neque beatae, voluptates, sunt tenetur id. Quae deleniti
+      necessitatibus tenetur perferendis repudiandae omnis veritatis nostrum?
+      Ratione et accusantium enim dolorum eligendi harum inventore rem, nam
+      exercitationem esse. In porro blanditiis harum amet! Reiciendis,
+      cupiditate tempore maxime perferendis placeat voluptatibus quo voluptas
+      labore magnam nulla minus, doloremque dolore hic blanditiis molestias
+      sapiente a nihil laborum aliquam debitis quidem, enim amet fugit. Sit
+      earum quae molestias nemo a asperiores recusandae, nostrum quam quod magni
+      laboriosam quia? Deleniti, architecto optio! Cumque, a cupiditate at minus
+      exercitationem facere necessitatibus magnam ipsam fugiat in consequatur,
+      quidem obcaecati et ut dolorum quam saepe illo commodi? Voluptatibus
+      cumque quos consequuntur eligendi, fugiat error magni? Optio fugit rerum
+      repellendus recusandae quaerat voluptatibus, aperiam mollitia obcaecati
+      dolor debitis?
+    </div>
+    <div class="docs"></div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+    <script src="{{ url_for('static',filename='javascript/favicon.js') }}"></script>
+    <script src="{{ url_for('static',filename='javascript/script.js') }}"></script>
+  </body>
+</html>
