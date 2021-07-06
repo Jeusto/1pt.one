@@ -9,7 +9,7 @@
     <meta name="title" content="1pt.one - A minimalistic url shortener" />
     <link
       rel="shortcut icon"
-      href="../static/favicon.ico"
+      href="{{ url_for('static',filename='favicon.ico') }}"
       type="image/x-icon"
     />
     <meta
@@ -157,15 +157,13 @@
       </div>
       <div class="result">
         <div id="result__inner">
-          <p id="result__long">
-            https://account.mongodb.com/account/login?n=%2Fv2%2F60e250ecefd3ec5e15acd896&nextHash=%23metrics%2FreplicaSet%2F60e252069774ca00f4a845d8%2Fexplorer%2Furl-shortener%2Furls%2Ffind
-          </p>
+          <p id="result__long">https://www.jeusto.me/</p>
           <div>
             <a
               id="result__short"
-              href="http://127.0.0.1:5000/xqc"
+              href="https://1pt.one/jeusto.me"
               target="_blank"
-              >1pt.one/xqc</a
+              >1pt.one/jeusto.me</a
             >
             <button id="result__copyBtn">Copy</button>
           </div>
