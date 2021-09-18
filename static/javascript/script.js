@@ -25,7 +25,7 @@ short_url_input.addEventListener("keyup", function (event) {
 // Send request to server to shorten url
 shorten_btn.onclick = function () {
   fetch(
-    `http://127.0.0.1:5000/shorten?short=${short_url_input.value}&long=${long_url_input.value}`
+    `${window.location}/shorten?short=${short_url_input.value}&long=${long_url_input.value}`
   )
     .then((response) => response.json())
     .then((data) => {

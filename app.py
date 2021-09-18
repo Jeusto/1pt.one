@@ -85,7 +85,6 @@ def add_url(short_url, long_url):
 
 # Retrieve info about a short url from database
 def get_url(short_url):
-    print(short_url)
     # Check if short url already exists
     result = collection.find_one({"short_url": short_url})
     if result == None:
@@ -132,7 +131,12 @@ def index():
 @app.route("/status", methods=["GET"])
 def status():
     response = Response(
-        "{'status': '200', 'message': Api is live. Read the documentation at ###'}",
+        json.dumps(
+            {
+                "status": 200,
+                "message": "Api is live. Read the documentation at https://github.com/Jeusto/1pt.one",
+            }
+        ),
         status=200,
         mimetype="application/json",
     )
