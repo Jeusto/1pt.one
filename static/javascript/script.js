@@ -41,7 +41,7 @@ shorten_btn.onclick = function () {
         result__inner.style.display = "flex";
         result__copyBtn.innerHTML = "Copy";
         result__long.innerHTML = `${data.long_url}`;
-        result__short.href = `1pt.one/${data.short_url}`;
+        result__short.href = `${data.short_url}`;
         result__short.innerHTML = `1pt.one/${data.short_url}`;
       }
     });

@@ -85,6 +85,7 @@ def add_url(short_url, long_url):
 
 # Retrieve info about a short url from database
 def get_url(short_url):
+    print(short_url)
     # Check if short url already exists
     result = collection.find_one({"short_url": short_url})
     if result == None:
