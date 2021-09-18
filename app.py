@@ -113,7 +113,7 @@ def get_url(short_url):
         mimetype="application/json",
     )
     # Increase the number of visits
-    collection.update(
+    collection.update_one(
         {"short_url": short_url},
         {"$set": {"number_of_visits": result["number_of_visits"] + 1}},
     )
