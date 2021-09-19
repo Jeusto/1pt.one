@@ -1,19 +1,19 @@
 import os
-import pymongo
 import json
 import validators
 from uuid import uuid4
 from datetime import datetime
 from dotenv import load_dotenv, find_dotenv
-from flask import Flask, redirect, url_for, request, Response
+from flask import Flask, redirect, request, Response
 from flask import render_template
 from pymongo import MongoClient
 
 app = Flask(__name__)
 
 ######### Database connection
+
 load_dotenv(find_dotenv())
-connection_string = os.getenv("CONNECTION_STRING")
+connection_string = os.environ['CONNECTION_STRING']
 
 cluster = MongoClient(connection_string)
 database = cluster["url-shortener"]
@@ -186,4 +186,4 @@ def retrieve():
 
 # Start server
 if __name__ == "__main__":
-    app.run(threaded=True, port=5000)
+  app.run(host='0.0.0.0', port=8080)
