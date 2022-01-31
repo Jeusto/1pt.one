@@ -49,4 +49,5 @@ shorten_btn.onclick = function () {
 
 result__copyBtn.addEventListener("click", () => {
   result__copyBtn.innerHTML = "Copied";
+  navigator.clipboard.writeText(result__short.innerHTML);
 });
