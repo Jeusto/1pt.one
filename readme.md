@@ -23,8 +23,8 @@ A minimalistic url shortener. Create a short url in seconds and track the number
 {
   "status": 201,
   "message": "Successfully added short url!",
-  "short": "gth",
-  "long": "https://github.com"
+  "short_url": "gth",
+  "long_url": "https://github.com"
 }
 ```
 
