@@ -152,7 +152,7 @@ def redirect_to_long(short_url):
     if response["status"] == 200:
         return redirect(response["long_url"])
     else:
-        return redirect("https://google.com/")
+        return redirect("/")
 
     response = Response(
         "{'status': '200', 'message': Api is live. Read the documentation at ###'}",
