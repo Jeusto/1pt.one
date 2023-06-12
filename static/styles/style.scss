@@ -44,6 +44,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 
     .logo-icon {
       width: 2rem;
@@ -56,6 +58,7 @@ body {
       margin-left: 0.5rem;
       font-size: 1.5rem;
       color: rgb(1, 82, 162);
+      text-align: center;
     }
   }
 
