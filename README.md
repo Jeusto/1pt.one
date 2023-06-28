@@ -3,7 +3,7 @@
 A minimalistic URL shortener. Create a short URL in seconds and track the number of visits with the website or the api.
 You can use the service with the [website 1pt.one](https://1pt.one/) or the [CLI tool](https://github.com/Jeusto/1pt.one-cli).
 
-![demo](demo.gif)
+![demo](static/assets/demo.gif)
 
 ## API
 

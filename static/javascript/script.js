@@ -25,7 +25,7 @@ short_url_input.addEventListener("keyup", function (event) {
 // Send request to server to shorten url
 shorten_btn.onclick = function () {
   fetch(
-    `${window.location}/shorten?short=${short_url_input.value}&long=${long_url_input.value}`
+    `${window.location}shorten?short=${short_url_input.value}&long=${long_url_input.value}`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -51,3 +51,17 @@ result__copyBtn.addEventListener("click", () => {
   result__copyBtn.innerHTML = "Copied";
   navigator.clipboard.writeText(result__short.innerHTML);
 });
+
+// Show error if user was redirected because of an invalid short url
+window.onload = function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const url_not_found = urlParams.get("url_not_found");
+  if (url_not_found) {
+    window.history.replaceState({}, document.title, "/");
+    Swal.fire({
+      icon: "error",
+      title: `Error`,
+      text: `You were redirected because the short url you entered (${url_not_found}) is invalid. Please try again.`,
+    });
+  }
+};
