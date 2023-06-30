@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 html,
 body {
   margin: 0;
@@ -6,26 +7,33 @@ body {
   max-height: 100vh;
   overflow: hidden;
 }
-
 body {
   font-family: "Inter";
   background: #f6f8ff;
 }
-
 * {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+  box-sizing: inherit;
 }
-*:before, *:after {
-  -webkit-box-sizing: inherit;
-          box-sizing: inherit;
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 .swal2-confirm {
-  background-color: hsl(0, 83%, 70%) !important;
-  -webkit-box-shadow: 0px 0px 0px 0px hsl(0, 68%, 64%) !important;
-          box-shadow: 0px 0px 0px 0px hsl(0, 68%, 64%) !important;
+  background-color: #f27373 !important;
+  box-shadow: 0px 0px 0px 0px #e26565 !important;
   padding: 0.75rem 2rem !important;
+}
+
+@keyframes slideFromBottom {
+  0% {
+    transform: translateX(-50rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
 }
 
 .main {
@@ -33,33 +41,17 @@ body {
   width: 90%;
   max-width: 35rem;
   height: 80vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .main .logo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2rem;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .main .logo .logo-icon {
@@ -68,42 +60,33 @@ body {
 }
 .main .logo .logo-text {
   margin: 0;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
   width: fit-content;
   margin-left: 0.5rem;
   font-size: 1.5rem;
-  color: rgb(1, 82, 162);
+  color: #0152a2;
   text-align: center;
 }
 .main .url-input {
   margin-bottom: 1rem;
-  --background: hsl(0, 0%, 100%);
-  --border-default: hsl(210, 67%, 93%);
-  --border-active: hsl(210, 99%, 32%);
-  --text-color: hsl(210, 17%, 47%);
-  --placeholder-color: hsl(210, 39%, 81%);
-  --icon: hsl(210, 99%, 32%);
-  --close: hsl(210, 17%, 47%);
-  --close-light: hsl(210, 28%, 73%);
-  --close-background: hsl(210, 60%, 96%);
+  --background: white;
+  --border-default: #e1edf9;
+  --border-active: #0152a2;
+  --text-color: #63788c;
+  --placeholder-color: #bccfe1;
+  --icon: #0152a2;
+  --close: #63788c;
+  --close-light: #a7bacd;
+  --close-background: #eff5fb;
   width: 100%;
   height: 3rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   position: relative;
   border-radius: 8px;
   background: var(--background);
-  -webkit-box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border, var(--border-default));
-          box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border, var(--border-default));
-  -webkit-transition: -webkit-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
+  box-shadow: inset 0 0 0 var(--border-width, 1px)
+    var(--border, var(--border-default));
   transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
   --favicon-scale: 0;
   --icon-offset: 0px;
   --clear-x: 0px;
@@ -123,7 +106,8 @@ body {
   --clear-long-array: 8.5px;
   --clear-long-offset: 24px;
 }
-.main .url-input.clearing, .main .url-input:focus-within {
+.main .url-input.clearing,
+.main .url-input:focus-within {
   --border-width: 1.5px;
   --border: var(--border-active);
 }
@@ -158,13 +142,10 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  -webkit-transform: scale(var(--favicon-scale)) translateZ(0);
-          transform: scale(var(--favicon-scale)) translateZ(0);
+  transform: scale(var(--favicon-scale)) translateZ(0);
 }
 .main .url-input .text {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
 }
 .main .url-input .text input {
   -webkit-appearance: none;
@@ -181,18 +162,6 @@ body {
   font-weight: 500;
   color: var(--text-color);
 }
-.main .url-input .text input::-webkit-input-placeholder {
-  color: var(--placeholder-color);
-}
-.main .url-input .text input::-moz-placeholder {
-  color: var(--placeholder-color);
-}
-.main .url-input .text input:-ms-input-placeholder {
-  color: var(--placeholder-color);
-}
-.main .url-input .text input::-ms-input-placeholder {
-  color: var(--placeholder-color);
-}
 .main .url-input .text input::placeholder {
   color: var(--placeholder-color);
 }
@@ -208,8 +177,7 @@ body {
   transition: --background 0.2s;
   border-radius: 6px;
   opacity: var(--clear-opacity);
-  -webkit-transform: scale(var(--clear-scale)) translateZ(0);
-          transform: scale(var(--clear-scale)) translateZ(0);
+  transform: scale(var(--clear-scale)) translateZ(0);
 }
 .main .url-input .clear:before {
   content: "";
@@ -219,10 +187,9 @@ body {
   right: 12px;
   left: var(--clear-swipe-lef t);
   background: var(--background);
-  -webkit-transform-origin: 100% 50%;
-          transform-origin: 100% 50%;
-  -webkit-transform: translateX(var(--clear-swipe)) scaleX(var(--clear-swipe-x)) translateZ(0);
-          transform: translateX(var(--clear-swipe)) scaleX(var(--clear-swipe-x)) translateZ(0);
+  transform-origin: 100% 50%;
+  transform: translateX(var(--clear-swipe)) scaleX(var(--clear-swipe-x))
+    translateZ(0);
 }
 .main .url-input .clear:focus {
   --b: var(--close-background);
@@ -240,11 +207,10 @@ body {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke: var(--close);
-  -webkit-transform: translateX(var(--clear-x)) rotate(var(--clear-rotate)) translateZ(0);
-          transform: translateX(var(--clear-x)) rotate(var(--clear-rotate)) translateZ(0);
+  transform: translateX(var(--clear-x)) rotate(var(--clear-rotate))
+    translateZ(0);
 }
 .main .url-input .clear svg path {
-  -webkit-transition: stroke 0.2s;
   transition: stroke 0.2s;
 }
 .main .url-input .clear svg path.arrow {
@@ -252,8 +218,7 @@ body {
   stroke-dasharray: 4px;
   stroke-dashoffset: var(--clear-arrow-offset);
   opacity: var(--clear-arrow-o);
-  -webkit-transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
-          transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
+  transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
 }
 .main .url-input .clear svg path.arrow:last-child {
   stroke-dashoffset: var(--clear-arrow-offset-second);
@@ -267,23 +232,16 @@ body {
   stroke-dasharray: var(--clear-long-array) 15.5px;
   stroke-dashoffset: var(--clear-long-offset);
   opacity: var(--clear-arrow-o);
-  -webkit-transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
-          transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
+  transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
 }
 .main .url-input .clear:hover {
   --b: var(--close-background);
 }
 .main .second-row {
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .main .second-row .url-input2 {
   margin-bottom: 0;
@@ -292,14 +250,10 @@ body {
   width: 30%;
   border: none;
   cursor: pointer;
-  color: hsl(210, 17%, 47%);
+  color: #63788c;
   background-color: white;
-  -webkit-box-shadow: 0px 0px 0px 1px hsl(210, 67%, 93%);
-          box-shadow: 0px 0px 0px 1px hsl(210, 67%, 93%);
-  -webkit-transition: -webkit-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
+  box-shadow: 0px 0px 0px 1px #e1edf9;
   transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -311,9 +265,8 @@ body {
   padding: 0.85rem 1.25rem;
 }
 .main .second-row .shorten-btn:hover {
-  -webkit-box-shadow: 0px 0px 0px 1.5px hsl(210, 99%, 32%);
-          box-shadow: 0px 0px 0px 1.5px hsl(210, 99%, 32%);
-  color: hsl(210, 99%, 32%);
+  box-shadow: 0px 0px 0px 1.5px #0152a2;
+  color: #0152a2;
 }
 .main .result {
   width: 100%;
@@ -324,35 +277,23 @@ body {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background-color: hsl(0, 0%, 100%);
-  -webkit-box-shadow: 0px 0px 0px 1px hsl(210, 67%, 93%);
-          box-shadow: 0px 0px 0px 1px hsl(210, 67%, 93%);
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-animation: slideFromBottom 600ms ease-in-out;
-          animation: slideFromBottom 600ms ease-in-out;
+  background-color: white;
+  box-shadow: 0px 0px 0px 1px #e1edf9;
+  justify-content: space-between;
+  align-items: center;
+  animation: slideFromBottom 600ms ease-in-out;
 }
 .main .result #result__long {
-  color: hsl(210, 17%, 47%);
+  color: #63788c;
   max-width: 50%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .main .result #result__right {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   max-width: 50%;
 }
 .main .result #result__short {
@@ -360,7 +301,7 @@ body {
   text-decoration: none;
   display: inline-block;
   position: relative;
-  color: hsl(210, 99%, 32%);
+  color: #0152a2;
   font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -370,36 +311,25 @@ body {
   content: "";
   position: absolute;
   width: 100%;
-  -webkit-transform: scaleX(0);
-          transform: scaleX(0);
+  transform: scaleX(0);
   height: 2px;
   bottom: -3px;
   left: 0;
-  background-color: hsl(210, 99%, 32%);
-  -webkit-transform-origin: bottom right;
-          transform-origin: bottom right;
-  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-  transition: -webkit-transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+  background-color: #0152a2;
+  transform-origin: bottom right;
   transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
-  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
 .main .result #result__short:hover::after {
-  -webkit-transform: scaleX(1);
-          transform: scaleX(1);
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 .main .result #result__copyBtn {
   border: none;
   cursor: pointer;
-  color: hsl(210, 17%, 47%);
-  background-color: hsl(210, 67%, 93%);
-  -webkit-box-shadow: 0px 0px 0px 1px hsl(211, 30%, 79%);
-          box-shadow: 0px 0px 0px 1px hsl(211, 30%, 79%);
-  -webkit-transition: -webkit-box-shadow 0.3s;
-  transition: -webkit-box-shadow 0.3s;
+  color: #63788c;
+  background-color: #e1edf9;
+  box-shadow: 0px 0px 0px 1px #b9c9da;
   transition: box-shadow 0.3s;
-  transition: box-shadow 0.3s, -webkit-box-shadow 0.3s;
   border-radius: 8px;
   border: none;
   outline: none;
@@ -411,33 +341,8 @@ body {
   padding: 0.5rem 1rem;
 }
 .main .result #result__copyBtn:hover {
-  -webkit-box-shadow: 0px 0px 0px 1.5px hsl(210, 99%, 32%);
-          box-shadow: 0px 0px 0px 1.5px hsl(210, 99%, 32%);
-  color: hsl(210, 99%, 32%);
-}
-@-webkit-keyframes slideFromBottom {
-  0% {
-    -webkit-transform: translateX(-50rem);
-            transform: translateX(-50rem);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0rem);
-            transform: translateX(0rem);
-    opacity: 1;
-  }
-}
-@keyframes slideFromBottom {
-  0% {
-    -webkit-transform: translateX(-50rem);
-            transform: translateX(-50rem);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0rem);
-            transform: translateX(0rem);
-    opacity: 1;
-  }
+  box-shadow: 0px 0px 0px 1.5px #0152a2;
+  color: #0152a2;
 }
 
 .footer {
@@ -445,42 +350,27 @@ body {
   bottom: 2rem;
   right: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
 }
 .footer .footer__link {
   text-decoration: none;
-  color: hsl(210, 17%, 47%);
-  fill: hsl(210, 17%, 47%);
+  color: #63788c;
+  fill: #63788c;
   padding: 0.25rem;
   cursor: pointer;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 .footer .footer__link:hover {
-  color: hsl(210, 99%, 32%);
-  fill: hsl(210, 99%, 32%);
+  color: #0152a2;
+  fill: #0152a2;
 }
 .footer .footer__link .footer__text {
   margin: 0;
@@ -491,4 +381,4 @@ body {
   margin-right: 0.5rem;
   width: 1.1rem;
   height: 1.1rem;
-}/*# sourceMappingURL=style.css.map */
+}
