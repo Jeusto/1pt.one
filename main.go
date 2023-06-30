@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -11,14 +13,6 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
-
-type URL struct {
-	ID             string `bson:"_id" json:"_id"`
-	ShortURL       string `bson:"short_url" json:"short_url"`
-	LongURL        string `bson:"long_url" json:"long_url"`
-	CreatedAt      string `bson:"created_at" json:"created_at"`
-	NumberOfVisits int    `bson:"number_of_visits" json:"number_of_visits"`
-}
 
 type ErrorResponse struct {
 	Status  int    `json:"status"`
@@ -59,10 +53,11 @@ func main() {
 	router.Static("/static", "./static")
 
 	router.GET("/", index)
-	router.GET("/status", status)
-	router.GET("/:shortURL", redirect)
-	router.GET("/shorten", shorten)
-	router.GET("/retrieve", retrieve)
+	router.POST("/", uploadFile)
+	router.GET("/status", getStatus)
+	router.GET("/:shortURL", getShortUrl)
+	router.GET("/shorten", shortenUrl)
+	router.GET("/retrieve", getStats)
 
 	// Start the server
 	router.Run(":8080")
@@ -72,7 +67,7 @@ func index(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", nil)
 }
 
-func status(c *gin.Context) {
+func getStatus(c *gin.Context) {
 	response := gin.H{
 		"status":  200,
 		"message": "API is live. Read the documentation at https://github.com/Jeusto/1pt.one",
@@ -81,25 +76,31 @@ func status(c *gin.Context) {
 	c.JSON(http.StatusOK, response)
 }
 
-func redirect(c *gin.Context) {
+func getShortUrl(c *gin.Context) {
 	shortURL := c.Param("shortURL")
 
-	url, err := getURL(shortURL)
+	item, err := getURL(shortURL)
 	if err != nil {
+		fmt.Println(err)
 		c.Redirect(http.StatusFound, "/?url_not_found="+shortURL)
 		return
 	}
 
 	incrementUrlVisits(shortURL)
-	c.Redirect(http.StatusFound, url.LongURL)
+	if item.LongURL != "" {
+		c.Redirect(http.StatusFound, item.LongURL)
+	} else {
+		c.String(http.StatusOK, item.FileContent)
+	}
 }
 
-func shorten(c *gin.Context) {
+func shortenUrl(c *gin.Context) {
 	shortURL := c.Query("short")
 	longURL := c.Query("long")
 
 	response, err := addURL(shortURL, longURL)
 	if err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, ErrorResponse{
 			Status:  http.StatusBadRequest,
 			Message: err.Error(),
@@ -110,7 +111,7 @@ func shorten(c *gin.Context) {
 	c.JSON(http.StatusCreated, response)
 }
 
-func retrieve(c *gin.Context) {
+func getStats(c *gin.Context) {
 	shortURL := c.Query("short")
 
 	response, err := getURL(shortURL)
@@ -123,4 +124,20 @@ func retrieve(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, response)
+}
+
+func uploadFile(c *gin.Context) {
+	codeBytes, _ := ioutil.ReadAll(c.Request.Body)
+	file := string(codeBytes)
+
+	shortURL, err := addFile(file)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, ErrorResponse{
+			Status:  http.StatusInternalServerError,
+			Message: err.Error(),
+		})
+		return
+	}
+
+	c.String(http.StatusOK, "https://1pt.one/"+shortURL.ShortURL+"\n")
 }
