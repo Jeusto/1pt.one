@@ -35,7 +35,7 @@ You can use the service with the [website 1pt.one](https://1pt.one/) or the [CLI
 
 | Parameter | Description                                 | Example |
 | --------- | ------------------------------------------- | ------- |
-| `short`   | **Optional** - The short version of the url | `gth`   |
+| `short`   | **Required** - The short version of the url | `gth`   |
 
 #### Example Response
 
