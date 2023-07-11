@@ -160,6 +160,9 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: var(--text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .main .url-input .text input::placeholder {
   color: var(--placeholder-color);

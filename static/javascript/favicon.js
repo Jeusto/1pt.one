@@ -24,22 +24,13 @@ function delay(fn, ms) {
 document.querySelectorAll(".url-input").forEach((elem) => {
   let icon = elem.querySelector(".icon"),
     favicon = icon.querySelector(".favicon"),
-    input = elem.querySelector("input");
+    input = elem.querySelector("#long_url_input");
 
   input.addEventListener(
     "input",
     delay((e) => {
       let bool = input.value.length,
         valid = validURL(input.value);
-      to(elem, {
-        "--clear-scale": bool ? 1 : 0,
-        duration: bool ? 0.5 : 0.15,
-        ease: bool ? "elastic.out(1, .7)" : "none",
-      });
-      to(elem, {
-        "--clear-opacity": bool ? 1 : 0,
-        duration: 0.15,
-      });
       to(elem, {
         "--icon-offset": valid ? "24px" : "0px",
         duration: 0.15,
