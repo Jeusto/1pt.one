@@ -22,10 +22,10 @@ You can use the service with the [website 1pt.one](https://1pt.one/) or the [CLI
 
 ```json
 {
-  "status": 201,
   "message": "Successfully added short url!",
   "short_url": "gth",
-  "long_url": "https://github.com"
+  "long_url": "https://github.com",
+  "file_content": ""
 }
 ```
 
@@ -41,12 +41,11 @@ You can use the service with the [website 1pt.one](https://1pt.one/) or the [CLI
 
 ```json
 {
-  "status": 200,
-  "_id": 6,
   "short_url": "gth",
   "long_url": "https://github.com",
   "created_at": "18/09/2021 20:26:17",
-  "number_of_visits": 2
+  "number_of_visits": 2,
+  "file_content": ""
 }
 ```
 

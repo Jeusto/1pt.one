@@ -69,7 +69,6 @@ func index(c *gin.Context) {
 
 func getStatus(c *gin.Context) {
 	response := gin.H{
-		"status":  200,
 		"message": "API is live. Read the documentation at https://github.com/Jeusto/1pt.one",
 	}
 
@@ -108,7 +107,13 @@ func shortenUrl(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusCreated, response)
+	c.JSON(http.StatusCreated,
+		gin.H{
+			"message":   "Successfully added short url.",
+			"short_url": response.ShortURL,
+			"long_url":  response.LongURL,
+		},
+	)
 }
 
 func getStats(c *gin.Context) {
