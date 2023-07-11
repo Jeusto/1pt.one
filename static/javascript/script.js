@@ -47,6 +47,7 @@ shorten_btn.onclick = function () {
     });
 };
 
+// Copy short url to clipboard
 result__copyBtn.addEventListener("click", () => {
   result__copyBtn.innerHTML = "Copied";
   navigator.clipboard.writeText(result__short.innerHTML);

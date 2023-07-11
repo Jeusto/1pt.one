@@ -72,7 +72,7 @@ body {
   --border-default: #e1edf9;
   --border-active: #0152a2;
   --text-color: #63788c;
-  --placeholder-color: #bccfe1;
+  --placeholder-color: #9eb4c9;
   --icon: #0152a2;
   --close: #63788c;
   --close-light: #a7bacd;
@@ -148,7 +148,6 @@ body {
   flex-grow: 1;
 }
 .main .url-input .text input {
-  -webkit-appearance: none;
   line-height: 24px;
   background: none;
   border: none;
@@ -166,7 +165,6 @@ body {
   color: var(--placeholder-color);
 }
 .main .url-input .clear {
-  -webkit-appearance: none;
   position: relative;
   z-index: 1;
   padding: 0;
@@ -176,20 +174,7 @@ body {
   background: var(--b, transparent);
   transition: --background 0.2s;
   border-radius: 6px;
-  opacity: var(--clear-opacity);
-  transform: scale(var(--clear-scale)) translateZ(0);
-}
-.main .url-input .clear:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 12px;
-  left: var(--clear-swipe-lef t);
-  background: var(--background);
-  transform-origin: 100% 50%;
-  transform: translateX(var(--clear-swipe)) scaleX(var(--clear-swipe-x))
-    translateZ(0);
+  opacity: 1;
 }
 .main .url-input .clear:focus {
   --b: var(--close-background);
@@ -198,8 +183,8 @@ body {
   display: block;
   position: relative;
   z-index: 1;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   outline: none;
   cursor: pointer;
   fill: none;
@@ -227,13 +212,6 @@ body {
   stroke-dasharray: var(--clear-line-array) 28.5px;
   stroke-dashoffset: var(--clear-line-offset);
 }
-.main .url-input .clear svg path.long {
-  stroke: var(--clear-arrow-stroke, var(--close));
-  stroke-dasharray: var(--clear-long-array) 15.5px;
-  stroke-dashoffset: var(--clear-long-offset);
-  opacity: var(--clear-arrow-o);
-  transform: translate(var(--clear-arrow-x), var(--clear-arrow-y)) translateZ(0);
-}
 .main .url-input .clear:hover {
   --b: var(--close-background);
 }
@@ -252,7 +230,6 @@ body {
   cursor: pointer;
   color: #63788c;
   background-color: white;
-  box-shadow: 0px 0px 0px 1px #e1edf9;
   transition: box-shadow 0.3s;
   border-radius: 8px;
   border: none;
@@ -264,7 +241,8 @@ body {
   font-weight: 500;
   padding: 0.85rem 1.25rem;
 }
-.main .second-row .shorten-btn:hover {
+.shorten-btn:focus,
+.shorten-btn:hover {
   box-shadow: 0px 0px 0px 1.5px #0152a2;
   color: #0152a2;
 }
@@ -272,7 +250,7 @@ body {
   width: 100%;
   height: 4rem;
 }
-.main .result #result__inner {
+#result__inner {
   display: none;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -283,20 +261,20 @@ body {
   align-items: center;
   animation: slideFromBottom 600ms ease-in-out;
 }
-.main .result #result__long {
+#result__long {
   color: #63788c;
   max-width: 50%;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.main .result #result__right {
+#result__right {
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 50%;
 }
-.main .result #result__short {
+#result__short {
   color: black;
   text-decoration: none;
   display: inline-block;
@@ -307,7 +285,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
 }
-.main .result #result__short:after {
+#result__short:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -319,11 +297,11 @@ body {
   transform-origin: bottom right;
   transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
 }
-.main .result #result__short:hover::after {
+#result__short:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-.main .result #result__copyBtn {
+#result__copyBtn {
   border: none;
   cursor: pointer;
   color: #63788c;
@@ -340,7 +318,8 @@ body {
   font-weight: 500;
   padding: 0.5rem 1rem;
 }
-.main .result #result__copyBtn:hover {
+#result__copyBtn:focus,
+#result__copyBtn:hover {
   box-shadow: 0px 0px 0px 1.5px #0152a2;
   color: #0152a2;
 }
@@ -358,7 +337,7 @@ body {
   font-size: 16px;
   font-weight: 500;
 }
-.footer .footer__link {
+.footer__link {
   text-decoration: none;
   color: #63788c;
   fill: #63788c;
@@ -368,14 +347,14 @@ body {
   justify-content: center;
   align-items: center;
 }
-.footer .footer__link:hover {
+.footer__link:hover {
   color: #0152a2;
   fill: #0152a2;
 }
-.footer .footer__link .footer__text {
+.footer__text {
   margin: 0;
 }
-.footer .footer__link .footer__icon {
+.footer__icon {
   border: none;
   background-color: transparent;
   margin-right: 0.5rem;

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>1pt.one - A minimalistic url shortener</title>
+    <title>1pt.one - A minimalistic URL shortener</title>
     <link rel="stylesheet" href="/static/styles/style.css" />
     <link
       rel="shortcut icon"
@@ -17,7 +17,7 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <meta name="title" content="1pt.one - A minimalistic url shortener" />
+    <meta name="title" content="1pt.one - A minimalistic URL shortener" />
     <meta
       name="description"
       content="Make a short url in seconds and track the number of visits with the free api. "
@@ -28,7 +28,7 @@
     <meta property="og:url" content="https://1pt.one" />
     <meta
       property="og:title"
-      content="1pt.one - A minimalistic url shortener"
+      content="1pt.one - A minimalistic URL shortener"
     />
     <meta
       property="og:description"
@@ -41,7 +41,7 @@
     <meta property="twitter:url" content="https://1pt.one/" />
     <meta
       property="twitter:title"
-      content="1pt.one - A minimalistic url shortener"
+      content="1pt.one - A minimalistic URL shortener"
     />
     <meta
       property="twitter:description"
@@ -52,45 +52,9 @@
   <body>
     <div class="main">
       <div class="logo">
-        <svg
-          class="logo-icon"
-          id="Capa_1"
-          enable-background="new 0 0 512.16 512.16"
-          height="512"
-          viewBox="0 0 512.16 512.16"
-          width="512"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <g>
-            <path
-              fill="#52a3f2"
-              d="m256.08 301.52-39.336-5.361-6.104-40.078c-25.281-24.961-65.281-24.961-90.24 0l-101.439 101.439c-25.281 24.961-25.281 65.6 0 90.561l45.119 45.119c24.961 25.281 65.6 25.281 90.561 0l101.439-101.44c24.961-24.961 24.961-64.961 0-90.24zm-146.881 146.56-45.119-45.121 101.439-101.76 37.34 7.264 8.102 38.176z"
-            />
-            <path
-              fill="#52a3f2"
-              d="m493.199 64.08-45.119-45.119c-24.961-25.281-65.6-25.281-90.561 0l-101.439 101.439c-24.961 24.959-24.961 64.959 0 90.24l40.559 7.688 4.881 37.752c25.281 24.959 65.281 24.959 90.24 0l101.439-101.439c25.281-24.961 25.281-65.6 0-90.561zm-146.558 146.881-39.682-8.74-5.76-36.701 101.762-101.44 45.119 45.119z"
-            />
-            <g fill="#2177cc">
-              <path
-                d="m165.52 301.199 37.34 7.264 8.102 38.176c-12.48 12.48-32.961 12.48-45.441 0-6.08-6.078-9.279-14.398-9.279-22.719s3.197-16.641 9.278-22.721z"
-              />
-              <path
-                d="m256.08 301.52v-.321l-39.336-5.041-5.783-40.078 45.119-45.119 40.559 7.367 4.56 37.752h.321z"
-              />
-            </g>
-            <path
-              fill="#0152a2"
-              d="m256.08 301.199v.321l-45.119 45.119-45.441-45.44 45.121-45.119h.32z"
-            />
-            <path
-              fill="#0152a2"
-              d="m346.641 210.961-45.121 45.119h-.321l-45.119-45.119v-.32l45.119-45.121z"
-            />
-          </g>
-        </svg>
-        <h1 class="logo-text">1pt.one - A minimalistic url shortener</h1>
+        <h1 class="logo-text">1pt.one — A minimalistic URL shortener</h1>
       </div>
-      <div class="url-input">
+      <div class="url-input" x-data="{ longUrlInput: '' }">
         <div class="icon">
           <svg viewBox="0 0 18 18">
             <path
@@ -104,26 +68,34 @@
         </div>
         <div class="text">
           <input
+            x-model="longUrlInput"
             id="long_url_input"
             type="text"
             placeholder="Enter a long URL"
           />
         </div>
-        <button class="clear" tabindex="0">
-          <svg viewBox="0 0 24 24">
-            <path class="line" d="M2 2L22 22" />
-            <path class="long" d="M9 15L20 4" />
-            <path class="arrow" d="M13 11V7" />
-            <path class="arrow" d="M17 11H13" />
+        <button
+          x-show="longUrlInput !== ''"
+          @click.prevent="longUrlInput =''"
+          x-transition
+          class="clear"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
       <div class="second-row">
-        <div class="url-input url-input2">
+        <div class="url-input url-input2" x-data="{ shortIdInput: '' }">
           <div class="icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
+              class="w-6 h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -139,17 +111,25 @@
           </div>
           <div class="text">
             <input
+              x-model="shortIdInput"
               id="short_url_input"
               type="text"
-              placeholder="Enter short version (optional)"
+              placeholder="Enter short identifier (optional)"
             />
           </div>
-          <button class="clear" tabindex="0">
-            <svg viewBox="0 0 24 24">
-              <path class="line" d="M2 2L22 22" />
-              <path class="long" d="M9 15L20 4" />
-              <path class="arrow" d="M13 11V7" />
-              <path class="arrow" d="M17 11H13" />
+          <button
+            x-show="shortIdInput !== ''"
+            @click.prevent="shortIdInput = ''"
+            x-transition
+            class="clear"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </svg>
           </button>
         </div>
