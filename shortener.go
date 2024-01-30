@@ -146,3 +146,14 @@ func generateNanoid() string {
 
 	return id
 }
+
+func shortUrlIsValid(shortIdentifier string) bool {
+	pattern := `^[a-zA-Z0-9-_]+$`
+	match, err := regexp.MatchString(pattern, shortIdentifier)
+
+	if err != nil {
+		return false
+	}
+
+	return match
+}

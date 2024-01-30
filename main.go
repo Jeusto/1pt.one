@@ -55,7 +55,7 @@ func main() {
 	router.GET("/", index)
 	router.POST("/", uploadFile)
 	router.GET("/status", getStatus)
-	router.GET("/:shortURL", getShortUrl)
+	router.GET("/:shortURL/*path", getShortUrl)
 	router.GET("/shorten", shortenUrl)
 	router.GET("/retrieve", getStats)
 
@@ -77,6 +77,7 @@ func getStatus(c *gin.Context) {
 
 func getShortUrl(c *gin.Context) {
 	shortURL := c.Param("shortURL")
+	additionalPath := c.Param("path")
 
 	item, err := getURL(shortURL)
 	if err != nil {
@@ -87,7 +88,10 @@ func getShortUrl(c *gin.Context) {
 
 	incrementUrlVisits(shortURL)
 	if item.LongURL != "" {
-		c.Redirect(http.StatusFound, item.LongURL)
+		// Append the additional path to the long URL
+		targetURL := item.LongURL + additionalPath
+		fmt.Println(targetURL)
+		c.Redirect(http.StatusFound, targetURL)
 	} else {
 		c.String(http.StatusOK, item.FileContent)
 	}
@@ -96,6 +100,14 @@ func getShortUrl(c *gin.Context) {
 func shortenUrl(c *gin.Context) {
 	shortURL := c.Query("short")
 	longURL := c.Query("long")
+
+	if !shortUrlIsValid(shortURL) {
+		c.JSON(http.StatusBadRequest, ErrorResponse{
+			Status:  http.StatusBadRequest,
+			Message: "Short URL is not valid.",
+		})
+		return
+	}
 
 	response, err := addURL(shortURL, longURL)
 	if err != nil {
