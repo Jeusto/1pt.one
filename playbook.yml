@@ -1,0 +1,105 @@
+---
+- name: Deploy 1pt.one
+  hosts: all
+  become: true
+
+  vars:
+    git_repo_url: "https://github.com/Jeusto/1pt.one.git"
+    destination_path: "/opt/1pt.one"
+    go_version: "1.20.3"
+    env_file_path: "/opt/1pt.one/.env"
+    env_file_content: ""
+    service_name: "go-webserver"
+    listen_port: "8080"
+
+  tasks:
+    - name: Ensure git is installed
+      apt:
+        name: git
+        state: present
+        update_cache: true
+
+    - name: Clone the Git repository
+      git:
+        repo: "{{ git_repo_url }}"
+        dest: "{{ destination_path }}"
+        version: "master"
+        force: yes
+
+    - name: Download Go tarball
+      get_url:
+        url: "https://dl.google.com/go/go{{ go_version }}.linux-amd64.tar.gz"
+        dest: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+
+    - name: Extract Go tarball
+      unarchive:
+        src: "/tmp/go{{ go_version }}.linux-amd64.tar.gz"
+        dest: /usr/local
+        remote_src: yes
+        creates: /usr/local/go
+
+    - name: Create symlink for Go binary
+      file:
+        src: /usr/local/go/bin/go
+        dest: /usr/bin/go
+        state: link
+
+    - name: Add .env file
+      copy:
+        dest: "{{ env_file_path }}"
+        content: "{{ env_file_content }}"
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: List files in the destination directory for debugging
+      command: ls -la "{{ destination_path }}"
+      register: ls_output
+
+    - name: Debug ls output
+      debug:
+        var: ls_output.stdout_lines
+
+    - name: Create systemd service file for Go application
+      copy:
+        dest: "/etc/systemd/system/{{ service_name }}.service"
+        content: |
+          [Unit]
+          Description=Go Web Server
+          After=network.target
+
+          [Service]
+          EnvironmentFile={{ env_file_path }}
+          ExecStart=/usr/bin/go run {{ destination_path }}/main.go {{ destination_path }}/shortener.go
+          WorkingDirectory={{ destination_path }}
+          Restart=always
+          User=root
+
+          [Install]
+          WantedBy=multi-user.target
+      notify:
+        - Reload systemd
+
+    - name: Enable and start Go web server service
+      systemd:
+        name: "{{ service_name }}"
+        enabled: true
+        state: started
+
+    - name: Check status of Go web server service
+      command: systemctl status {{ service_name }}
+      register: service_status
+
+    - name: Debug service status
+      debug:
+        var: service_status.stdout_lines
+
+    - name: Allow traffic on port {{ listen_port }}
+      ufw:
+        rule: allow
+        port: "{{ listen_port }}"
+        proto: tcp
+
+  handlers:
+    - name: Reload systemd
+      command: systemctl daemon-reload
